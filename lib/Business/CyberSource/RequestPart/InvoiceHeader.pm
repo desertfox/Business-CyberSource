@@ -17,19 +17,19 @@ use MooseX::Types::CyberSource qw(
 
 has 'purchaser_vat_registration_number' => (
     isa         => _VarcharThirteen,
-    is          => 'rw',
+    is          => 'ro',
     remote_name => 'purchaserVATRegistrationNumber',
 );
 
 has 'user_po' => (
     isa         => _VarcharTwentyFive,
-    is          => 'rw',
+    is          => 'ro',
     remote_name => 'userPO',
 );
 
 has 'vat_invoice_reference_number' => (
     isa         => _VarcharFifteen,
-    is          => 'rw',
+    is          => 'ro',
     remote_name => 'vatInvoiceReferenceNumber',
 );
 
