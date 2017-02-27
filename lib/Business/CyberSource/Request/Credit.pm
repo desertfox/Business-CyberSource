@@ -12,7 +12,7 @@ with qw(
 	Business::CyberSource::Request::Role::TaxService
 );
 
-use MooseX::Types::CyberSource qw( BillTo Card CreditService);
+use MooseX::Types::CyberSource qw( BillTo Card CreditService InvoiceHeader );
 
 use Module::Runtime qw( use_module );
 
@@ -40,6 +40,14 @@ has card => (
 	traits      => ['SetOnce'],
 	is          => 'rw',
 	coerce      => 1,
+);
+
+has 'invoice_header' => (
+    isa         => InvoiceHeader,
+    remote_name => 'invoiceHeader',
+    is          => 'ro',
+    required    => 0,
+    coerce      => 1
 );
 
 __PACKAGE__->meta->make_immutable;
@@ -74,6 +82,11 @@ __PACKAGE__->meta->make_immutable;
 					year => '2025',
 				},
 			},
+            invoice_header => {
+                purchaser_vat_registration_number => 'ATU99999999',
+                user_po => '123456',
+                vat_invoice_reference_number => '1234',
+            },
 		});
 
 =head1 DESCRIPTION
