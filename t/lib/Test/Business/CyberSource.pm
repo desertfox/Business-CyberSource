@@ -256,6 +256,7 @@ sub BUILD {
                     reference_code  => depends_on('reference_code'),
                     purchase_totals => depends_on('/helper/purchase_totals'),
                     bill_to         => depends_on('/helper/bill_to'),
+                    invoice_header  => depends_on('/helper/invoice_header'),
                 },
                 parameters => {
                     card => {
@@ -271,6 +272,11 @@ sub BUILD {
                         isa =>
                           'Business::CyberSource::RequestPart::BusinessRules',
                         optional => 1,
+                    },
+                    invoice_header => {
+                        isa =>
+                            'Business::CyberSource::RequestPart::BusinessRules',
+                            optional => 1,
                     },
                 },
             );

@@ -12,20 +12,12 @@ with qw(
   Business::CyberSource::Request::Role::TaxService
 );
 
-use MooseX::Types::CyberSource qw( CaptureService  InvoiceHeader );
+use MooseX::Types::CyberSource qw( CaptureService );
 
 has '+service' => (
     isa         => CaptureService,
     remote_name => 'ccCaptureService',
     lazy_build  => 0,
-);
-
-has 'invoice_header' => (
-    isa         => InvoiceHeader,
-    remote_name => 'invoiceHeader',
-    is          => 'ro',
-    required    => 0,
-    coerce      => 1
 );
 
 __PACKAGE__->meta->make_immutable;

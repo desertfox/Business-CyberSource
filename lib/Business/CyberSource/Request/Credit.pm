@@ -12,7 +12,7 @@ with qw(
 	Business::CyberSource::Request::Role::TaxService
 );
 
-use MooseX::Types::CyberSource qw( BillTo Card CreditService InvoiceHeader );
+use MooseX::Types::CyberSource qw( BillTo Card CreditService );
 
 use Module::Runtime qw( use_module );
 
@@ -40,14 +40,6 @@ has card => (
 	traits      => ['SetOnce'],
 	is          => 'rw',
 	coerce      => 1,
-);
-
-has 'invoice_header' => (
-    isa         => InvoiceHeader,
-    remote_name => 'invoiceHeader',
-    is          => 'ro',
-    required    => 0,
-    coerce      => 1
 );
 
 __PACKAGE__->meta->make_immutable;

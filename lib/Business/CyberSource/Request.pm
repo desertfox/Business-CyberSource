@@ -12,7 +12,7 @@ with qw(
   MooseX::RemoteHelper::CompositeSerialization
 );
 
-use MooseX::Types::CyberSource qw( PurchaseTotals Service Items );
+use MooseX::Types::CyberSource qw( PurchaseTotals Service Items InvoiceHeader );
 
 use Module::Runtime qw( use_module );
 
@@ -110,6 +110,14 @@ has '+http_trace' => (
     init_arg => undef
 );
 
+has 'invoice_header' => (
+    isa         => InvoiceHeader,
+    remote_name => 'invoiceHeader',
+    is          => 'ro',
+    required    => 0,
+    coerce      => 1
+);
+
 __PACKAGE__->meta->make_immutable;
 1;
 
@@ -183,6 +191,10 @@ L<Business::CyberSource::RequestPart::PurchaseTotals>
 =attr items
 
 An array of L<Business::CyberSource::RequestPart::Item>
+
+=attr invoice_header
+
+L<Business::CyberSource::RequestPart::InvoiceHeader>
 
 =attr comments
 
