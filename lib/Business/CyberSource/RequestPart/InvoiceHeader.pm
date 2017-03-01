@@ -9,26 +9,22 @@ use Moose;
 extends 'Business::CyberSource::MessagePart';
 with 'MooseX::RemoteHelper::CompositeSerialization';
 
-use MooseX::Types::CyberSource qw(
-  _VarcharThirteen
-  _VarcharFifteen
-  _VarcharTwentyFive
-);
+use MooseX::Types::Common::String qw( NonEmptySimpleStr );
 
 has 'purchaser_vat_registration_number' => (
-    isa         => _VarcharThirteen,
+    isa         => NonEmptySimpleStr,
     is          => 'ro',
     remote_name => 'purchaserVATRegistrationNumber',
 );
 
 has 'user_po' => (
-    isa         => _VarcharTwentyFive,
+    isa         => NonEmptySimpleStr,
     is          => 'ro',
     remote_name => 'userPO',
 );
 
 has 'vat_invoice_reference_number' => (
-    isa         => _VarcharFifteen,
+    isa         => NonEmptySimpleStr,
     is          => 'ro',
     remote_name => 'vatInvoiceReferenceNumber',
 );

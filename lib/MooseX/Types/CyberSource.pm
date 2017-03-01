@@ -53,10 +53,7 @@ use MooseX::Types -declare => [
       _VarcharOne
       _VarcharSeven
       _VarcharTen
-      _VarcharThirteen
-      _VarcharFifteen
       _VarcharTwenty
-      _VarcharTwentyFive
       _VarcharFifty
       _VarcharSixty
       )
@@ -264,21 +261,9 @@ subtype _VarcharTen, as SimpleStr,
   where { length $_ <= 10 },
   message { $varchar_message . '10' };
 
-subtype _VarcharThirteen, as SimpleStr,
-  where { length $_ <= 13 },
-  message { $varchar_message . '13' };
-
-subtype _VarcharFifteen, as SimpleStr,
-  where { length $_ <= 15 },
-  message { $varchar_message . '15' };
-
 subtype _VarcharTwenty, as NonEmptySimpleStr,
   where { length $_ <= 20 },
   message { $varchar_message . '20' };
-
-subtype _VarcharTwentyFive, as SimpleStr,
-  where { length $_ <= 25 },
-  message { $varchar_message . '25' };
 
 subtype _VarcharFifty, as NonEmptySimpleStr,
   where { length $_ <= 50 },
