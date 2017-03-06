@@ -9,10 +9,10 @@ use Moose;
 extends 'Business::CyberSource::MessagePart';
 with 'MooseX::RemoteHelper::CompositeSerialization';
 
-use MooseX::Types::Moose qw( Num );
+use MooseX::Types::Common::Numeric qw( PositiveOrZeroNum );
 
 has 'alternate_tax_amount' => (
-    isa         => Num,
+    isa         => PositiveOrZeroNum,
     is          => 'ro',
     remote_name => 'alternateTaxAmount',
 );
@@ -21,16 +21,21 @@ has 'alternate_tax_indicator' => (
     isa         => 'Bool',
     is          => 'ro',
     remote_name => 'alternateTaxIndicator',
+    serializer => sub {
+        my ( $attr, $instance ) = @_;
+
+        return $attr->get_value( $instance ) ? '1' : '0';
+    }
 );
 
 has 'vat_tax_amount' => (
-    isa         => Num,
+    isa         => PositiveOrZeroNum,
     is          => 'ro',
     remote_name => 'vatTaxAmount',
 );
 
 has 'vat_tax_rate' => (
-    isa         => Num,
+    isa         => PositiveOrZeroNum,
     is          => 'ro',
     remote_name => 'vatTaxRate',
 );
