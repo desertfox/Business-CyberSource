@@ -21,8 +21,9 @@ use XML::Compile::SOAP::WSS 1.04;
 use XML::Compile::WSDL11;
 use XML::Compile::SOAP11;
 use XML::Compile::Transport::SOAPHTTP;
-use File::ShareDir::ProjectDistDir 1.000
-	dist_file => defaults => {  strict => 1 };
+use Test::File::ShareDir::Dist {
+    'Business-CyberSource' => 'share/dist/Business-CyberSource' };
+use File::ShareDir qw( dist_file );
 
 our @CARP_NOT = ( __PACKAGE__, qw( Class::MOP::Method::Wrapped ) );
 
